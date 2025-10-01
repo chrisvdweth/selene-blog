@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
 <head>
+  {{ if .Site.Params.GoogleAnalyticsID }}
+    {{ partial "analytics-gtag.html" . }}
+  {{ end }}
   {{ partial "head.html" . }}
 </head>
 <body class="flex flex-col min-h-screen text-black bg-slate-50 dark:text-white dark:bg-slate-800">

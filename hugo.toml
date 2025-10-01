@@ -15,3 +15,4 @@ theme = 'selene'
 [params]
   logo = "images/selene-blog-logo.png"
   avatar = "images/selene-avatar-default.jpg"
+  googleAnalyticsID = "G-YX8PLR382B"
