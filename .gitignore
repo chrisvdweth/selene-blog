@@ -8,6 +8,11 @@
 # But do NOT ignore .gitignore
 !.gitignore
 
+# Except GitHub Actions workflow
+!.github/
+!.github/workflows/
+!.github/workflows/hugo.yml
+
 # Hugo build output (always ignored – GitHub Actions builds this)
 public/
 docs/
