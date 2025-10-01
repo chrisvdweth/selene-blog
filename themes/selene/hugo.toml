@@ -1,0 +1,42 @@
+
+[menus]
+  #[[menus.main]]
+  #  name = 'Home'
+  #  pageRef = '/posts'
+  #  weight = 10
+
+  [[menus.main]]
+    name = 'Posts'
+    pageRef = '/posts'
+    weight = 20
+
+  [[menus.main]]
+    name = 'Categories'
+    pageRef = '/categories'
+    weight = 30
+
+  [[menus.main]]
+    name = 'Tags'
+    pageRef = '/tags'
+    weight = 40
+
+  [[menus.main]]
+    name = 'Authors'
+    pageRef = '/authors'
+    weight = 50
+
+	
+  [[menus.main]]
+    name = 'About'
+    pageRef = '/pages/about'
+  	weight = 60
+	
+  [[menus.main]]
+    name = 'Contact'
+    pageRef = '/pages/contact'
+  	weight = 70	
+	
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = '0.146.0'

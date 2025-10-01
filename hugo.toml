@@ -1,0 +1,17 @@
+baseURL = 'https://chrisvdweth.github.io/selene-blog/'
+languageCode = 'en-us'
+title = 'SELENE Blog'
+theme = 'selene'
+
+
+[taxonomies]
+  author = "authors"
+  tag = "tags"
+  category = "categories"
+
+[pagination]
+  pagerSize = 10
+
+[params]
+  logo = "images/selene-blog-logo.png"
+  avatar = "images/selene-avatar-default.jpg"

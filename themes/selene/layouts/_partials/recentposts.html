@@ -1,0 +1,13 @@
+<div class="m-2 p-4 text-black dark:text-white">
+  <h2 class="asidebox-title text-xl font-bold mb-4 text-black dark:text-white">Recent Posts</h2>
+  <ul class="recentposts">
+	{{ $recent := first 5 (sort (where site.RegularPages "Section" "posts") "Date" "desc") }}
+    {{ range $recent }}
+      <li class="mb-2">
+        <a href="{{ .RelPermalink }}" class="text-black dark:text-white hover:underline">
+          {{ .Title }}
+        </a>
+      </li>
+    {{ end }}
+  </ul>
+</div>

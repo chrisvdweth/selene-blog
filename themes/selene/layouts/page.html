@@ -1,0 +1,46 @@
+{{ define "main" }}
+  <div id="page">
+    <h1 class="text-3xl font-bold text-black dark:text-white mt-6">{{ .Title }}</h1>
+	{{ $dateMachine := "x" }}
+	{{ $dateHuman := "y" }}
+	{{ if .Date }}
+      {{ $dateMachine = .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+      {{ $dateHuman = .Date | time.Format ":date_long" }}
+	{{ end }}
+	<div class="italic mb-8">
+	  {{ if .Date }}
+        <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+	  {{ end }}
+	  {{ if .Params.authors }}
+	    &mdash;
+		{{- $links := slice -}}
+		{{- range .Params.authors }}
+		  {{- $link := printf ` <a href="%s%s">%s</a>` ("authors/" | relURL) (. | urlize) . -}}
+		  {{- $links = $links | append $link -}}
+		{{- end -}}
+		{{- delimit $links ", " | safeHTML -}}
+	  {{ else }}
+		<!-- no authors -->
+		
+	  {{ end }}
+	</div>
+
+    {{ .Content }}
+	<div class="py-6">
+      {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+	</div>
+	
+	<nav class="flex justify-between mt-8">
+      <div>
+        {{ with .PrevInSection }}
+          <a href="{{ .RelPermalink }}" class="text-blue-600 dark:text-green-400">&larr; {{ .Title }}</a>
+        {{ end }}
+      </div>
+      <div>
+        {{ with .NextInSection }}
+          <a href="{{ .RelPermalink }}" class="text-blue-600 dark:text-green-400">{{ .Title }} &rarr;</a>
+        {{ end }}
+      </div>
+    </nav>
+  </div>
+{{ end }}

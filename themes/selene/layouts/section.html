@@ -1,0 +1,57 @@
+{{ define "main" }}
+  <h1 class="text-3xl font-bold text-black dark:text-white mt-6">{{ .Title }}</h1>
+  {{ .Content }}
+
+  {{ $paginator := .Paginate .Pages }}
+  {{ range $paginator.Pages }}
+  
+	{{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+    {{ $dateHuman := .Date | time.Format ":date_long" }}
+  
+	{{ $thumbnail := "" }}
+	{{ if .Params.thumbnail }}
+	  {{ $thumbnail = (printf "%s%s" .RelPermalink .Params.thumbnail) }}
+	{{ else }}
+	  {{ $thumbnail = (printf "%s%s" .Site.BaseURL "images/selene-post-thumbnail-default.jpg") }}
+	{{ end }}
+  
+	<div class="mt-6 relative flex flex-col md:flex-row w-full rounded-xl border-1 border-slate-200 dark:border-slate-900 bg-white dark:bg-slate-700">
+	  <div class="relative p-0 md:w-1/4 flex-shrink-0 overflow-hidden">
+	    <a href="{{ .RelPermalink }}">
+		  <img src="{{ $thumbnail }}" loading="lazy" alt="card-image" class="h-full w-full rounded-md md:rounded-lg object-cover" />
+	    </a>
+	  </div>
+	  <div class="flex flex-col gap-2 py-2 px-6">
+        <!-- Title -->
+        <p class="text-xl font-bold"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></p>
+        <!-- Summary -->
+	    <p class="text-justify">{{ .Summary }}</p>
+	    <!-- Time & Tags -->
+		<p class="italics text-sm"><time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></p>
+		<div class="py-6">Tags: 
+		  {{ range .GetTerms "tags" }}
+			<a href="{{ .RelPermalink }}" class="px-1 text-blue-600 dark:text-green-400">{{ .LinkTitle }}</a>
+		  {{ end }}
+		</div>
+      </div>
+    </div> 
+  {{ end }}
+
+  <nav class="py-6">Page:
+    {{ if $paginator.HasPrev }}
+      <a href="{{ $paginator.Prev.URL }}" class="text-blue-600 dark:text-green-400">&larr; Previous</a>
+    {{ end }}
+
+    {{ range $paginator.Pagers }}
+      {{ if eq . $paginator }}
+        <strong>{{ .PageNumber }}</strong>
+      {{ else }}
+        <a href="{{ .URL }}" class="text-blue-600 dark:text-green-400">{{ .PageNumber }}</a>
+      {{ end }}
+    {{ end }}
+
+    {{ if $paginator.HasNext }}
+      <a href="{{ $paginator.Next.URL }}" class="text-blue-600 dark:text-green-400">Next &rarr;</a>
+    {{ end }}
+  </nav>
+{{ end }}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body class="flex flex-col min-h-screen text-black bg-slate-50 dark:text-white dark:bg-slate-800">
+  <header class="shadow-md text-white bg-slate-950 sticky top-0 z-50">
+    {{ partial "header.html" . }}
+  </header>
+  <div class="container mx-auto px-0 flex flex-1 md:flex-row">
+    <main class="container mx-auto px-0 flex flex-col md:flex-row">
+      <div class="w-full md:w-3/4 px-4">
+        {{ block "main" . }}{{ end }}
+	  </div>
+	  <aside class="w-full md:w-1/4 px-4 min-w-xs">
+        {{ partial "recentposts.html" . }}
+		{{ partial "allcategories.html" . }}
+	    {{ partial "alltags.html" . }}
+      </aside>
+    </main>
+  </div>
+  <footer class="mt-auto text-black bg-slate-200 dark:text-white dark:bg-slate-900">
+    {{ partial "footer.html" . }}
+	{{ partial "math.html" . }}
+  </footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+# -------------------------------------------------
+# Hugo + GitHub Actions .gitignore
+# -------------------------------------------------
+
+# Ignore all hidden files/folders
+.*
+
+# But do NOT ignore .gitignore
+!.gitignore
+
+# Hugo build output (always ignored – GitHub Actions builds this)
+public/
+docs/
+
+# Hugo caches / build artifacts
+resources/
+hugo_stats.json
+
+# OS / Editor junk
+.DS_Store
+Thumbs.db
+*.log
+
+# IDE settings
+.vscode/
+.idea/
+
+# Node dependencies (if using npm/yarn for assets or themes)
+node_modules/
+package-lock.json
+yarn.lock

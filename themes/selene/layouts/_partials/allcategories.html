@@ -1,0 +1,12 @@
+<div class="m-2 p-4 text-blackdark:text-white">
+  <h2 class="asidebox-title text-xl font-bold mb-4">Categories</h2>
+  {{ range sort site.Taxonomies.categories "Page.Title" "asc" }}
+    <a href="{{ .Page.RelPermalink }}">
+	  <div class="button-tag">  
+	    {{ .Page.Title }}<sup>{{ .Count }}</sup>
+	  </div>
+	</a>
+  {{ end }}
+</div>
+
+

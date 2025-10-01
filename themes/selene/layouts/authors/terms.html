@@ -1,0 +1,47 @@
+{{ define "main" }}
+
+  <h1 class="text-3xl font-bold text-black dark:text-white mt-6">{{ .Title }}</h1>
+
+
+  
+<div class="space-y-4">
+  {{ $siteURL := (printf "%s%s" .Site.BaseURL .Site.Params.avatar) }}
+  {{ $terms := .Data.Terms }}
+  {{ range sort $terms "Count" "desc" }}
+    {{ $termPage := .Page }}
+	<a href="{{ $termPage.RelPermalink }}" class="space-y-4">
+    <div class="flex items-center space-x-4 p-4 my-3 bg-white dark:text-white dark:bg-slate-700 rounded-lg shadow hover:shadow-md transition-shadow border-1 border-slate-200 dark:border-slate-900">
+      {{ if $termPage }}
+	    {{ if $termPage.Params.avatar }}
+          <img src="{{ $termPage.RelPermalink | relURL }}{{ $termPage.Params.avatar }}" alt="{{ $termPage.Title }}" class="w-16 h-16 rounded-full object-cover border-2 border-gray-200">
+		{{ else }}
+		  <img src="{{ $siteURL }}" alt="{{ $termPage.Title }}" class="w-16 h-16 rounded-full object-cover border-2 border-gray-200">
+		{{ end }}
+        <div>
+          <h3 class="text-lg font-semibold text-black dark:text-white">{{ $termPage.Title }}</h3>
+          {{ with $termPage.Params.bio }}
+            <p class="text-sm text-gray-700 dark:text-gray-300">{{ . }}</p>
+          {{ end }}
+          <p class="text-sm text-gray-700 dark:text-gray-300">{{ .Count }} posts</p>
+        </div>
+      {{ else }}
+        <div>
+          <h3 class="text-lg font-semibold text-black">{{ .Name }}</h3>
+          <p class="text-sm text-gray-400">{{ .Count }} posts</p>
+        </div>
+      {{ end }}
+    </div>
+	</a>
+  {{ end }}
+</div>
+
+  
+  
+{{ end }}
+
+
+
+
+
+
+

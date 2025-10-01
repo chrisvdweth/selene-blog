@@ -1,0 +1,123 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+header {
+  border-bottom: 1px solid #000;
+  margin-bottom: 1rem;
+}
+
+footer {
+  border-top: 1px solid #000;
+  margin-top: 1rem;
+}
+
+
+#page p {
+  text-align: justify;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em; /* Adds 0.5em of space above and below each paragraph */
+}
+
+/* Adds extra space only between two consecutive paragraphs */
+#page p + p {
+  margin-top: 1.5em;
+}
+
+
+#page h1 {display: block; font-size: 2em; margin-top: 0.67em; margin-bottom: 0.67em; margin-left: 0; margin-right: 0; font-weight: bold; }
+#page h2 {display: block; font-size: 1.5em; margin-top: 0.83em; margin-bottom: 0.83em; margin-left: 0; margin-right: 0; font-weight: bold; }
+#page h3 {display: block; font-size: 1.17em; margin-top: 1em; margin-bottom: 1em; margin-left: 0; margin-right: 0; font-weight: bold; }
+#page h4 {display: block; font-size: 1em; margin-top: 1.33em; margin-bottom: 1.33em; margin-left: 0; margin-right: 0; font-weight: bold; }
+#page h5 {display: block; font-size: .83em; margin-top: 1.67em; margin-bottom: 1.67em; margin-left: 0; margin-right: 0; font-weight: bold; }
+#page h6 { display: block; font-size: .67em; margin-top: 2.33em; margin-bottom: 2.33em; margin-left: 0; margin-right: 0; font-weight: bold; }
+
+#page ul {
+  list-style-type: disc;
+  list-style-position: outside !important;
+  padding-left: 1em;
+}
+
+#page ul li {
+  padding: 8px;
+  margin-bottom: 4px;
+  text-align: justify;
+}
+
+#page a {
+  color: theme("colors.blue.600")
+}
+
+
+.dark #page a {
+  color: theme("colors.green.400")
+}
+
+.asidebox-title {
+  border-bottom: 2px solid theme("colors.slate.400");
+}
+
+
+.button-tag {
+  /* Basic button appearance */
+  display: inline-block; /* Allows width/height and horizontal alignment */
+  margin-top: 2px;
+  margin-bottom: 2px;  
+  padding: 5px 10px;
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: none; /* No default border */
+  border-radius: 3px; /* Rounded corners */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  text-align: center;
+  text-decoration: none; /* Remove underline if it were an anchor */
+  font-size: 16px;
+  line-height: 1.5; /* Vertical alignment of text */
+
+  /* Hover effect */
+  transition: background-color 0.3s ease; /* Smooth transition for background */
+}
+
+.button-tag:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Optional: Active state for click feedback */
+.button-tag:active {
+  background-color: #004085; /* Even darker blue when pressed */
+  transform: translateY(1px); /* Slight downward shift for "push" effect */
+}
+
+/*
+a {
+  color: #00e dark:#ffffff;
+  text-decoration: none;
+}
+*/
+/* Tailwind classes wonâ€™t apply directly, so use standard CSS */
+.mjx-container, .MathJax {
+  color: black; /* default light mode */
+}
+
+.dark .mjx-container, .dark .MathJax {
+  color: white; /* dark mode */
+}
+
+
+.svg-icon {
+  fill: theme("colors.blue.600"); /* Changes the interior color to red */
+  stroke: theme("colors.blue.600"); /* Changes the outline color to blue */
+  stroke-width: 1px; /* Sets the outline thickness */
+}
+
+.dark .svg-icon {
+  fill: theme("colors.green.400"); /* Changes the interior color to red */
+  stroke: theme("colors.green.400"); /* Changes the outline color to blue */
+  stroke-width: 1px; /* Sets the outline thickness */
+}
