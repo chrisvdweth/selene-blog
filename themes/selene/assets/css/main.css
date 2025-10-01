@@ -67,7 +67,7 @@ footer {
 .button-tag {
   /* Basic button appearance */
   display: inline-block; /* Allows width/height and horizontal alignment */
-  margin: 2px;
+  margin: 3px;
   padding: 5px 10px;
   background-color: #007bff; /* Blue background */
   color: white; /* White text */
