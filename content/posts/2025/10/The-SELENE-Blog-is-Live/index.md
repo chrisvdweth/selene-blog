@@ -1,6 +1,6 @@
 +++
 title = 'The SELENE Blog is Live'
-date = 2025-10-01T11:00:00-07:00
+date = 2025-10-01T01:00:00-07:00
 draft = false
 summary = "What is SELENE? Why this blog? Who is it for?"
 authors = ['Chris', 'Jithin']
